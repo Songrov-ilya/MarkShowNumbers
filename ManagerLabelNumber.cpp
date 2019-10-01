@@ -4,11 +4,13 @@ void ManagerLabelNumber::refreshLabel()
 {
     if(labelNumbers){
         currentPosition = labelNumbers->pos();
+        labelNumbers->disconnect(labelNumbers, &LabelNumber::changeOpacity,
+                                 labelNumbers, &LabelNumber::slotSetOpacity);
         labelNumbers->hide();
         labelNumbers->deleteLater();
     }
 
-    labelNumbers = new LabelNumber(currentPosition, parent);
+    labelNumbers = new LabelNumber(currentPosition);
     connect(labelNumbers, &LabelNumber::positionLabelChanged, this, &ManagerLabelNumber::slotPositionLabelChanged);
     QPixmap pix {QPixmap(currentPathImage).scaled(sizeLabel)};
     labelNumbers->setPixmap(pix);
@@ -28,9 +30,7 @@ ManagerLabelNumber::ManagerLabelNumber(QWidget *parent) :
 
 ManagerLabelNumber::~ManagerLabelNumber()
 {
-    if(labelNumbers){
-        delete labelNumbers;
-    }
+    delete labelNumbers;
 }
 
 void ManagerLabelNumber::showLabel(bool animation)

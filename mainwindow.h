@@ -32,8 +32,6 @@ protected:
     virtual void closeEvent(QCloseEvent *);
 
 public slots:
-    void slotShow();
-    void slotHide();
     void onActionOpenImage();
     void onActionAboutApp();
     void onActionDeveloper();
@@ -41,6 +39,8 @@ public slots:
     void onActionSizeImage();
     void onActionOriginalSizeImage();
     void onActionClearImages();
+    void slotShow();
+    void slotHide();
     void slotItemPressed(QListWidgetItem *item);
     void slotItemActivated(QListWidgetItem *);
     void slotSelectionChanged();

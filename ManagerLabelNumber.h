@@ -1,7 +1,7 @@
 #ifndef MANAGERLABELNUMBER_H
 #define MANAGERLABELNUMBER_H
 
-#include <LabelNumber.h>
+#include "LabelNumber.h"
 #include <QtWidgets>
 #include <QObject>
 

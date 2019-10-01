@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>Four.svg</file>
         <file>Logo_temporarily.png</file>
         <file>Four.ico</file>
     </qresource>

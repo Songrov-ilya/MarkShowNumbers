@@ -21,7 +21,7 @@ signals:
     void positionLabelChanged(QPoint);
     void changeOpacity(qreal);
 
-private slots:
+public slots:
     void slotSetOpacity(qreal opacity);
 };
 

@@ -4,15 +4,15 @@
 LabelNumber::LabelNumber(QPoint startPosition, QWidget *parent) :
     QLabel(parent)
 {
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    setFocusPolicy(Qt::NoFocus);
     move(startPosition);
     connect(this, &LabelNumber::changeOpacity, this, &LabelNumber::slotSetOpacity);
 }
 
 void LabelNumber::startAnimation()
 {
-    QTime time;
-    time.start();
+
     qreal opacity { 0.01 };
     for (int var = 0; var < 100; ++var){
         opacity = opacity + 0.01;
@@ -36,12 +36,11 @@ void LabelNumber::slotSetOpacity(qreal opacity)
 {
     QTime time;
     time.start();
-
     for (;;){
         if (time.elapsed() > 40){
-            setWindowOpacity(opacity);
-            QApplication::processEvents();
-            return;
+                setWindowOpacity(opacity);
+                QApplication::processEvents(QEventLoop::DialogExec);
+                return;
         }
     }
 }

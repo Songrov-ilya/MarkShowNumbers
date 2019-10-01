@@ -81,6 +81,7 @@ void MainWindow::setupConnections()
     connect(ui->listWidget, &QListWidget::itemPressed, this, &MainWindow::slotItemPressed);
     connect(ui->listWidget, &QListWidget::itemSelectionChanged, this, &MainWindow::slotSelectionChanged);
     connect(ui->listWidget, &QListWidget::itemActivated, this, &MainWindow::slotItemActivated);
+    connect(ui->radioButton, &QRadioButton::toggled, [this](){ this->ui->listWidget->setFocus(); });
 }
 
 void MainWindow::createItems()
@@ -155,16 +156,6 @@ void MainWindow::writeSettings()
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
-{
-    manager.hideLabel();
-}
-
-void MainWindow::slotShow()
-{
-    manager.showLabel(ui->radioButton->isChecked());
-}
-
-void MainWindow::slotHide()
 {
     manager.hideLabel();
 }
@@ -313,6 +304,16 @@ void MainWindow::onActionClearImages()
     ui->listWidget->clear();
 }
 
+void MainWindow::slotShow()
+{
+    manager.showLabel(ui->radioButton->isChecked());
+}
+
+void MainWindow::slotHide()
+{
+    manager.hideLabel();
+}
+
 void MainWindow::slotItemPressed(QListWidgetItem *item)
 {
     manager.setCurentPathImage(item->data(11).toString());
@@ -322,9 +323,7 @@ void MainWindow::slotItemPressed(QListWidgetItem *item)
 
 void MainWindow::slotItemActivated(QListWidgetItem *)
 {
-    manager.changeImage();
     manager.showLabel(ui->radioButton->isChecked());
-    ui->listWidget->setFocus();
 }
 
 void MainWindow::slotSelectionChanged()

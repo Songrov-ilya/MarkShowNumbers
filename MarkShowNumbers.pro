@@ -8,8 +8,11 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+CONFIG += c++11
+
 TARGET = Mark' 'Show' 'Numbers
 TEMPLATE = app
+VERSION = 1.10.0.0
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -22,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
+
 
 SOURCES += \
         LabelNumber.cpp \
@@ -46,7 +49,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     Four.qrc
 
-RC_ICONS = Four2.ico
+RC_ICONS = Four.ico
 
 
 #DISTFILES += \
